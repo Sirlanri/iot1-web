@@ -1,5 +1,10 @@
 # iot1-web
 
+## 一个简单无聊的课设 _(:з」∠)_
+
+此项目用于显示树莓派采集的信息，比如温湿度
+
+
 ## Project setup
 ```
 yarn install
