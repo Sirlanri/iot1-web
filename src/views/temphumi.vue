@@ -53,11 +53,12 @@ export default {
       freshFre: 1,
       tempRes:[20,21,24,26,30,27,30],
       humiRes:[10,50,60,90,80,70,60],
-      
+
     };
   },
 
   mounted(){
+    this.getReal()
     this.draw()
   },
 
@@ -92,6 +93,24 @@ export default {
 
 
   methods: {
+    getReal(){
+      setInterval(() => {
+        if (this.freshBtn) {
+          this.getRealtimeData() 
+        }
+      }, this.freshFre);
+    },
+
+    getRealtimeData(){
+      this.axios.get('web/getRealtime')
+      .then(res=>{
+        if (res.status==200) {
+          this.humiData.push(res.data.humi)
+          this.tempData.push(res.data.temp)
+        }
+      })
+    },
+
     draw() {
       var dom = this.$refs.temphumi;
       var chart = echarts.init(dom);
@@ -130,14 +149,12 @@ export default {
             type: "category",
             boundaryGap: true,
             data:(function (){
-                var now = new Date();
-                var res = [];
+                var data = [];
                 var len = 15;
                 while (len--) {
-                    res.unshift(now.toLocaleTimeString().replace(/^\D*/,''));
-                    now = new Date(now - 2000);
+                    data.push('')
                 }
-                return res;
+                return data;
             })()
           },
           
@@ -182,6 +199,8 @@ export default {
         ],
       });
     },
+
+
   },
 };
 </script>
