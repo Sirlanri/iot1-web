@@ -102,7 +102,7 @@ export default {
     },
 
     getRealtimeData(){
-      this.axios.get('web/getRealtime')
+      this.axios.get('getRealtime')
       .then(res=>{
         if (res.status==200) {
           this.humiData.push(res.data.humi)
