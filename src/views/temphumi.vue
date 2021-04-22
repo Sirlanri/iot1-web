@@ -116,8 +116,8 @@ export default {
       var chart = echarts.init(dom);
       chart.setOption({
         title: {
-          text: "动态数据",
-          subtext: "纯属虚构",
+          text: "温湿度",
+          subtext: "实时数据",
         },
         tooltip: {
           trigger: "axis",
