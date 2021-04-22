@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col cols="4">
-      <v-text-field label="授权码" v-model="authcode" outlined></v-text-field>
+      <v-text-field type="password" label="授权码" v-model="authcode" outlined></v-text-field>
     </v-col>
     <v-col cols="8"> 
       <v-btn-toggle  color="primary">
@@ -12,7 +12,7 @@
     </v-col>
 
     <v-snackbar
-      v-model="snackbar"
+      v-model="infowin"
     >
       {{ info }}
 
