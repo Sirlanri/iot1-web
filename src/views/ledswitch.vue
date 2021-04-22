@@ -4,7 +4,7 @@
       <v-text-field label="授权码" v-model="authcode" outlined></v-text-field>
     </v-col>
     <v-col cols="8"> 
-      <v-btn-toggle  >
+      <v-btn-toggle  color="primary">
         <v-btn block @click="sclose">关闭</v-btn>
         <v-btn block @click="son">常亮</v-btn>
         <v-btn block @click="sblink">闪烁</v-btn>
