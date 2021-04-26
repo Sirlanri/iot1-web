@@ -64,23 +64,19 @@ export default {
 
   computed:{
     tempData(){
-      var data=[]
-      if (this.tempRes.length<=15) {
-        data=this.tempRes
+      if (this.tempRes.length<=30) {
+        return this.tempRes
       }else{
-        data=this.tempRes.slice(-15)
+        return this.tempRes.slice(-30)
       }
-      return data
     },
 
     humiData(){
-      var data=[]
-      if (this.humiRes.length<=15) {
-        data=this.humiRes
+      if (this.humiRes.length<=30) {
+        return this.humiRes
       }else{
-        data=this.humiRes.slice(-15)
+        return this.humiRes.slice(-30)
       }
-      return data
     },
 
     maxHumi(){
@@ -98,15 +94,17 @@ export default {
         if (this.freshBtn) {
           this.getRealtimeData() 
         }
-      }, this.freshFre);
+      }, this.freshFre*1000);
     },
 
     getRealtimeData(){
       this.axios.get('getRealtime')
       .then(res=>{
         if (res.status==200) {
-          this.humiData.push(res.data.humi)
-          this.tempData.push(res.data.temp)
+          this.humiRes.push(res.data.humi)
+          this.tempRes.push(res.data.temp)
+          console.log(this.humiRes.slice(-15))
+          this.draw()
         }
       })
     },
@@ -150,7 +148,7 @@ export default {
             boundaryGap: true,
             data:(function (){
                 var data = [];
-                var len = 15;
+                var len = 30;
                 while (len--) {
                     data.push('')
                 }

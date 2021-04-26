@@ -50,7 +50,8 @@ export default {
             auth:this.authcode
           }
         }).then(res=>{
-          if (res.code!=200) {
+          console.log(res.status)
+          if (res.status!=200) {
             this.info="授权码错误！"
             this.infowin=true
           }
@@ -65,7 +66,7 @@ export default {
             auth:this.authcode
           }
         }).then(res=>{
-          if (res.code!=200) {
+          if (res.status!=200) {
             this.info="授权码错误！"
             this.infowin=true
           }
@@ -80,7 +81,7 @@ export default {
             auth:this.authcode
           }
         }).then(res=>{
-          if (res.code!=200) {
+          if (res.status!=200) {
             this.info="授权码错误！"
             this.infowin=true
           }
