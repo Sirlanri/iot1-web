@@ -7,8 +7,16 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: '',
+    component: Home,
+    children:[
+      {
+        path:'',
+        name:'realtime',
+        component:()=>import('@/views/realtime/index.vue')
+      },
+      
+    ]
   },
   
 ]
