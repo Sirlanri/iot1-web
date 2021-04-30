@@ -1,16 +1,6 @@
 <template>
   <div>
     <v-row>
-      <v-col md="2" offset-md="0">
-        <v-switch v-model="freshBtn" label="数据开关"></v-switch>
-      </v-col>
-      <v-col>
-        <v-card-text> 每秒刷新频率：{{ freshFre }} </v-card-text>
-        <v-slider v-model="freshFre" max="10"></v-slider>
-      </v-col>
-    </v-row>
-
-    <v-row>
       <div ref="temphumi" class="temp-humi-chart"></div>
     </v-row>
   </div>
@@ -46,19 +36,26 @@ echarts.use([
   LineChart,
   CanvasRenderer,
 ]);
+
+
 export default {
   data() {
     return {
-      freshBtn: false,
-      freshFre: 1,
+      chart:null,
       tempRes:[20,21,24,26,30,27,30],
       humiRes:[10,50,60,90,80,70,60],
 
     };
   },
 
+  props:{
+    freshBtn:Boolean,
+    freshFre:Number,
+  },
+
   mounted(){
     this.getReal()
+    this.drawinit()
     this.draw()
   },
 
@@ -109,10 +106,13 @@ export default {
       })
     },
 
-    draw() {
+    drawinit(){
       var dom = this.$refs.temphumi;
-      var chart = echarts.init(dom);
-      chart.setOption({
+      this.chart = echarts.init(dom);
+    },
+
+    draw() {
+      this.chart.setOption({
         title: {
           text: "温湿度",
           subtext: "实时数据",
