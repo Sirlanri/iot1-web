@@ -1,5 +1,5 @@
 <template>
-  <div ref="tempchart" class="temp-chart"></div>
+  <div ref="humichart" class="humi-chart"></div>
 </template>
 
 <script>
@@ -33,81 +33,78 @@ export default {
   data() {
     return {
       chart: null,
-      tempRes1: [20, 21, 24, 26, 30, 27, 30],
-      tempRes2: [30, 21, 34, 26, 30, 27, 47],
-      tempRes3: [20, 21, 18, 10, 16, 14, 15],
-      maxlen:10,
+      humiRes1: [20, 21, 24, 26, 30, 27, 30],
+      humiRes2: [30, 21, 34, 26, 30, 27, 47],
+      humiRes3: [20, 21, 18, 10, 16, 14, 15],
+      maxlen: 10,
     };
   },
 
-  mounted(){
-    this.drawinit()
-    this.draw()
+  mounted() {
+    this.drawinit();
+    this.draw();
   },
 
-  computed:{
-    maxTemp(){
-      return Math.max.apply(null,this.tempRes1,this.tempRes2,this.tempRes3)+15
-    },
-
-    xAxisData(){
+  computed: {
+    xAxisData() {
       var data = [];
-                var len = this.maxlen;
-                while (len--) {
-                    data.push('')
-                }
-                return data;
-    }
+      var len = this.maxlen;
+      while (len--) {
+        data.push("");
+      }
+      return data;
+    },
   },
 
   methods: {
-    getReal(){
+    getReal() {
       setInterval(() => {
         if (this.freshBtn) {
-          this.getRealtimeData() 
+          this.getRealtimeData();
         }
-      }, this.freshFre*1000);
+      }, this.freshFre * 1000);
     },
-    getRealtimeData(){
-      this.axios.get('getRealTemp')
-      .then(res=>{
+
+    getRealtimeData() {
+      this.axios.get("getRealHumi").then((res) => {
         //这段代码写的和屎一样，希望以后有能力优化一下
-        if (res.status==200) {
-          if (this.tempRes1.length>=this.maxlen) {
-            this.tempRes1.shift()
-            this.tempRes1.push(res.data.temp1)
-          }else{
-            this.tempRes1.push(res.data.temp1)
+        if (res.status == 200) {
+          if (this.humiRes1.length >= this.maxlen) {
+            this.humiRes1.shift();
+            this.humiRes1.push(res.data.humi1);
+          } else {
+            this.humiRes1.push(res.data.humi1);
           }
-          if (this.tempRes2.length>=this.maxlen) {
-            this.tempRes2.shift()
-            this.tempRes2.push(res.data.temp2)
-          }else{
-            this.tempRes2.push(res.data.temp2)
+          if (this.humiRes2.length >= this.maxlen) {
+            this.humiRes2.shift();
+            this.humiRes2.push(res.data.humi2);
+          } else {
+            this.humiRes2.push(res.data.humi2);
           }
-          if (this.tempRes3.length>=this.maxlen) {
-            this.tempRes3.shift()
-            this.tempRes3.push(res.data.temp3)
-          }else{
-            this.tempRes3.push(res.data.temp3)
+          if (this.humiRes3.length >= this.maxlen) {
+            this.humiRes3.shift();
+            this.humiRes3.push(res.data.humi3);
+          } else {
+            this.humiRes3.push(res.data.humi3);
           }
 
-          this.draw()
+          this.draw();
         }
-      })
+      });
     },
 
     drawinit() {
-      var dom = this.$refs.tempchart;
+      var dom = this.$refs.humichart;
       this.chart = echarts.init(dom);
     },
 
     draw() {
       this.chart.setOption({
         title: {
-          text: "温度",
+          text: "潮湿度",
+          right:0
         },
-        color:['#d66a04','#d6c104','#d60477'],
+        color:['#04c8d6','#0489d6','#0419d6'],
         tooltip: {
           trigger: "axis",
         },
@@ -124,16 +121,16 @@ export default {
         xAxis: {
           type: "category",
           boundaryGap: false,
-          data:this.xAxisData
+          data: this.xAxisData,
         },
         yAxis: {
-            type: "value",
-            max: 'dataMax',
-            min: 0,
-            axisLabel:{
-              formatter:'{value} ℃'
-            },
-            boundaryGap: [0.2, 0.2],
+          type: "value",
+          max: 100,
+          min: 0,
+          axisLabel: {
+            formatter: "{value} %",
+          },
+          boundaryGap: [0.2, 0.2],
         },
         series: [
           {
@@ -142,7 +139,7 @@ export default {
             lineStyle:{
               width:5
             },
-            data: this.tempRes1
+            data: this.humiRes1,
           },
           {
             name: "传感器2",
@@ -150,7 +147,7 @@ export default {
             lineStyle:{
               width:5
             },
-            data: this.tempRes2
+            data: this.humiRes2,
           },
           {
             name: "传感器3",
@@ -158,9 +155,8 @@ export default {
             lineStyle:{
               width:5
             },
-            data: this.tempRes3
+            data: this.humiRes3,
           },
-          
         ],
       });
     },
@@ -169,8 +165,9 @@ export default {
 </script>
 
 <style>
-.temp-chart {
+.humi-chart {
   height: 400px;
   width: 100%;
+  color: #d60477;
 }
 </style>

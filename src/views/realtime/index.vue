@@ -13,28 +13,31 @@
     <v-row>
       <v-col lg="6">
         <temp :freshBtn="freshBtn" :freshFre="freshFre"></temp>
-
+      </v-col>
+      <v-col>
+        <humi></humi>
       </v-col>
     </v-row>
   </div>
 </template>
 
 <script>
-import Temp from './temp.vue'
+import Humi from "./humi.vue";
+import Temp from "./temp.vue";
 export default {
-  components: {Temp  },
+  components: {
+    Temp,
 
-  data(){
-    return{
-      freshBtn:false,
-      freshFre:1
-    }
+    Humi,
   },
-
-
-}
+  data() {
+    return {
+      freshBtn: false,
+      freshFre: 1,
+    };
+  },
+};
 </script>
 
 <style>
-
 </style>
