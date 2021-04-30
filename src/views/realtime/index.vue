@@ -9,14 +9,20 @@
         <v-slider v-model="freshFre" max="10"></v-slider>
       </v-col>
     </v-row>
-    <temphumi :freshBtn="freshBtn" :freshFre="freshFre"></temphumi>
+
+    <v-row>
+      <v-col lg="6">
+        <temp :freshBtn="freshBtn" :freshFre="freshFre"></temp>
+
+      </v-col>
+    </v-row>
   </div>
 </template>
 
 <script>
-import temphumi from './temphumi.vue'
+import Temp from './temp.vue'
 export default {
-  components: { temphumi },
+  components: {Temp  },
 
   data(){
     return{
