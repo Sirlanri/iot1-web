@@ -15,7 +15,7 @@
         <temp :freshBtn="freshBtn" :freshFre="freshFre"></temp>
       </v-col>
       <v-col>
-        <humi></humi>
+        <humi :freshBtn="freshBtn" :freshFre="freshFre"></humi>
       </v-col>
     </v-row>
   </div>

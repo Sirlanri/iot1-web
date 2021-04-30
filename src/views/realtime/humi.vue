@@ -41,6 +41,7 @@ export default {
   },
 
   mounted() {
+    this.getReal()
     this.drawinit();
     this.draw();
   },
@@ -58,11 +59,13 @@ export default {
 
   methods: {
     getReal() {
-      setInterval(() => {
+      setTimeout(() => {
         if (this.freshBtn) {
-          this.getRealtimeData();
+          this.getRealtimeData()
         }
-      }, this.freshFre * 1000);
+        this.getReal()
+      }, this.freshFre*1000);
+      
     },
 
     getRealtimeData() {

@@ -41,6 +41,7 @@ export default {
   },
 
   mounted(){
+    this.getReal()
     this.drawinit()
     this.draw()
   },
@@ -61,13 +62,15 @@ export default {
   },
 
   methods: {
-    getReal(){
-      setInterval(() => {
+    getReal() {
+      setTimeout(() => {
         if (this.freshBtn) {
-          this.getRealtimeData() 
+          this.getRealtimeData()
         }
+        this.getReal()
       }, this.freshFre*1000);
     },
+
     getRealtimeData(){
       this.axios.get('getRealTemp')
       .then(res=>{
