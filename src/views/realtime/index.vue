@@ -18,17 +18,24 @@
         <humi :freshBtn="freshBtn" :freshFre="freshFre"></humi>
       </v-col>
     </v-row>
+    <v-row>
+      <v-col lg="6">
+        <water :freshBtn="freshBtn" :freshFre="freshFre"></water>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
 <script>
 import Humi from "./humi.vue";
 import Temp from "./temp.vue";
+import Water from './water.vue';
 export default {
   components: {
     Temp,
 
     Humi,
+    Water,
   },
   data() {
     return {
