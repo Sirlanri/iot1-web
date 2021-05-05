@@ -13,7 +13,7 @@ export default {
   data() {
     return {
       chart: null,
-      waterData: "5986",
+      waterData: "20.01",
     };
   },
   props: {
@@ -54,20 +54,20 @@ export default {
     draw() {
       var option = {
         tooltip: {
-          formatter: "{a} <br/>{b} : {c}%",
+          formatter: "{a} <br/>{b} : {c}ML",
         },
         series: [
           {
-            name: "Pressure",
+            name: "当前容量",
             type: "gauge",
             progress: {
               show: true,
             },
             detail: {
               valueAnimation: true,
-              formatter: "{value}",
+              formatter: "{value} ml",
             },
-            max:65534,
+            max:40,
             data: [
               {
                 value: this.waterData,
