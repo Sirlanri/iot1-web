@@ -20,6 +20,9 @@
     </v-row>
     <v-row>
       <v-col lg="6">
+        <light :freshBtn="freshBtn" :freshFre="freshFre"></light>
+      </v-col>
+      <v-col lg="6">
         <water :freshBtn="freshBtn" :freshFre="freshFre"></water>
       </v-col>
     </v-row>
@@ -28,6 +31,7 @@
 
 <script>
 import Humi from "./humi.vue";
+import Light from './light.vue';
 import Temp from "./temp.vue";
 import Water from './water.vue';
 export default {
@@ -36,6 +40,7 @@ export default {
 
     Humi,
     Water,
+    Light,
   },
   data() {
     return {
