@@ -3,7 +3,7 @@
     <div class="home-back"></div>
     <topbar></topbar>
     <v-row>
-      <v-col lg="10" offset-lg="1">
+      <v-col lg="10" offset-lg="1" cols="12" offset="0">
         <router-view></router-view>
       </v-col>
       
@@ -28,9 +28,10 @@ export default {
   width: 100%;
   height: 100%;
   background-image: url("https://cdn.ri-co.cn/project/iot1/sunny1.jpg");
-  background-size: 100% 100%;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+ 
+	background-position: center;
   opacity: 0.7;
 }
 </style>
