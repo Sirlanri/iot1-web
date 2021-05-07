@@ -40,7 +40,7 @@ export default {
     },
 
     getRealtimeData() {
-      this.axios.get("getLight").then((res) => {
+      this.axios.get("getRealLight").then((res) => {
         if (res.status == 200) {
           this.lightData = res.data;
           this.draw()
@@ -70,7 +70,7 @@ export default {
               valueAnimation: true,
               formatter: "{value} Lux",
             },
-            max:40,
+            max:1000,
             data: [
               {
                 value: this.lightData,

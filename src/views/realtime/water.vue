@@ -38,7 +38,7 @@ export default {
     },
 
     getRealtimeData() {
-      this.axios.get("getWater").then((res) => {
+      this.axios.get("getRealWater").then((res) => {
         if (res.status == 200) {
           this.waterData = res.data;
           this.draw()
@@ -67,7 +67,7 @@ export default {
               valueAnimation: true,
               formatter: "{value} ml",
             },
-            max:40,
+            max:50,
             data: [
               {
                 value: this.waterData,

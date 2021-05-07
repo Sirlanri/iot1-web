@@ -29,7 +29,7 @@
 
     <v-row>
       <v-col lg="12">
-        <rain></rain>
+        <rain :freshBtn="freshBtn" :freshFre="freshFre"></rain>
       </v-col>
     </v-row>
   </div>
