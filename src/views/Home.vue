@@ -50,7 +50,8 @@ export default {
     //随机选择当前天气的图片
     randomPic(){
       let source="https://cdn.ri-co.cn/project/iot1/"
-      return source+this.comWeather+this.randomInt+".jpg"
+      let num=parseInt(Math.random()*5,10)+1;
+      return source+this.comWeather+num+".jpg"
     },
 
     backimg(){
