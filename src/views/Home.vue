@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="home-back"></div>
+    <div class="home-back" :style="backimg"></div>
     <topbar></topbar>
     <div class="top-space"></div>
     <v-row>
@@ -20,6 +20,80 @@ export default {
   components: {
     Topbar,
     
+  },
+
+  data(){
+    return{
+      weather:'',
+      rain:0,
+      light:0,
+    }
+  },
+
+  computed:{
+    //计算天气情况
+    comWeather(){
+      if (this.rain>10) {
+        return "rain"
+      }
+      if (this.light<100) {
+        return "cloud"
+      }
+      return "sunny"
+    },
+
+    //生成随机数
+    randomInt(){
+      return parseInt(Math.random()*5,10)+1;
+    },
+
+    //随机选择当前天气的图片
+    randomPic(){
+      let source="https://cdn.ri-co.cn/project/iot1/"
+      return source+this.comWeather+this.randomInt+".jpg"
+    },
+
+    backimg(){
+      return{
+        backgroundImage:`url(${this.randomPic})`
+      }
+    }
+  },
+
+  mounted(){
+    this.getData()
+  },
+
+  methods:{
+    getRain(){
+      this.axios.get('/getRealRainInc')
+      .then(res=>{
+        if (res.status==200) {
+          this.rain=res.data.rain
+        }
+      })
+    },
+
+    getCloud(){
+      this.axios.get('/getRealLight')
+      .then(res=>{
+        if (res.status==200) {
+          this.light=res.data
+        }
+      })
+    },
+
+    getData(){
+      setTimeout(() => {
+        if (this.freshBtn) {
+          this.getRain();
+          this.getCloud()
+        }
+        this.getData();
+      }, 5000);
+    }
+
+
   }
 }
 </script>
