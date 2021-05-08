@@ -109,4 +109,7 @@ export default {
 .top-space{
   height: 4rem;
 }
+.home{
+  overflow-x: hidden;
+}
 </style>

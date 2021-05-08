@@ -1,15 +1,18 @@
 <template>
   <v-row>
-    <v-col cols="4">
+    <v-col cols="8" offset="2" offset-lg="1" lg="4">
       <v-text-field dark type="password" label="授权码" v-model="authcode" outlined></v-text-field>
     </v-col>
-    <v-col cols="8"> 
-      <v-btn-toggle  color="primary">
-        <v-btn block @click="sclose">关闭</v-btn>
-        <v-btn block @click="son">常亮</v-btn>
-        <v-btn block @click="sblink">闪烁</v-btn>
-      </v-btn-toggle>
+    <v-col lg="2" cols="4">
+      <v-btn block @click="sclose" class="ctrl-btn">关闭</v-btn>
     </v-col>
+    <v-col lg="2" cols="4">
+      <v-btn block @click="son" class="ctrl-btn">常亮</v-btn>
+    </v-col>
+    <v-col lg="2" cols="4">
+      <v-btn block @click="sblink" class="ctrl-btn">闪烁</v-btn>
+    </v-col>
+    
 
     <v-snackbar
       v-model="infowin"
@@ -93,5 +96,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.ctrl-btn{
+  height: 45px !important;
+}
 </style>
