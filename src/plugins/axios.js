@@ -12,7 +12,7 @@ let config = {
   // baseURL: process.env.baseURL || process.env.apiUrl || ""
   // timeout: 60 * 1000, // Timeout
   withCredentials: true, // Check cross-site Access-Control
-  baseURL:"http://127.0.0.1:8090/iot1/web",
+  baseURL:"http://192.168.1.150:8090/iot1/web",
   //baseURL:"https://api.ri-co.cn/iot1"
 };
 
