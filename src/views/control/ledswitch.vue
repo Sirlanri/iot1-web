@@ -10,7 +10,7 @@
       <v-btn block @click="son" class="ctrl-btn">常亮</v-btn>
     </v-col>
     <v-col lg="2" cols="4">
-      <v-btn block @click="sblink" class="ctrl-btn">闪烁</v-btn>
+      <v-btn block @click="sblink" class="ctrl-btn">自动</v-btn>
     </v-col>
     
 
