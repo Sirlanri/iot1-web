@@ -26,7 +26,7 @@ export default {
     return{
       weather:'',
       rain:0,
-      light:0,
+      light:100,
     }
   },
 
@@ -85,12 +85,10 @@ export default {
 
     getData(){
       setTimeout(() => {
-        if (this.freshBtn) {
           this.getRain();
           this.getCloud()
-        }
         this.getData();
-      }, 5000);
+      }, 10000);
     }
 
 
