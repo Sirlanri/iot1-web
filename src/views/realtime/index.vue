@@ -28,8 +28,11 @@
     </v-row>
 
     <v-row>
-      <v-col lg="12">
+      <v-col cols="12">
         <weekht :freshBtn="freshBtn" :freshFre="freshFre"></weekht>
+      </v-col>
+      <v-col lg="10" offset-lg="1">
+        <ledswitch></ledswitch>
       </v-col>
     </v-row>
   </div>
@@ -37,6 +40,7 @@
 
 <script>
 import weekht from '../count/weekHT.vue';
+import ledswitch from '../control/ledswitch.vue';
 import Humi from "./humi.vue";
 import Light from './light.vue';
 import Temp from "./temp.vue";
@@ -44,7 +48,7 @@ import Water from './water.vue';
 export default {
   components: {
     Temp,
-
+    ledswitch,
     Humi,
     Water,
     Light,
