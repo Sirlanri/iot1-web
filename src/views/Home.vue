@@ -110,6 +110,6 @@ export default {
   height: 4rem;
 }
 .home{
-  overflow-x: hidden;
+  overflow-y: hidden;
 }
 </style>
