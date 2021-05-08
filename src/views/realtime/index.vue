@@ -29,13 +29,14 @@
 
     <v-row>
       <v-col lg="12">
-        
+        <weekht :freshBtn="freshBtn" :freshFre="freshFre"></weekht>
       </v-col>
     </v-row>
   </div>
 </template>
 
 <script>
+import weekht from '../count/weekHT.vue';
 import Humi from "./humi.vue";
 import Light from './light.vue';
 import Temp from "./temp.vue";
@@ -47,6 +48,7 @@ export default {
     Humi,
     Water,
     Light,
+    weekht ,
   },
   data() {
     return {
