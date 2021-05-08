@@ -5,8 +5,8 @@
         <v-switch v-model="freshBtn" label="数据开关"></v-switch>
       </v-col>
       <v-col cols="10" offset="1" md="8" offset-md="0">
-        <v-card-text> 每秒刷新频率：{{ freshFre }} </v-card-text>
-        <v-slider v-model="freshFre" max="10"></v-slider>
+        <v-card-text> 刷新间隔：{{ freshFre }} </v-card-text>
+        <v-slider v-model="freshFre" min="1" max="10"></v-slider>
       </v-col>
     </v-row>
 
