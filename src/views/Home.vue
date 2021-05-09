@@ -43,15 +43,10 @@ export default {
       return "sunny"
     },
 
-    //生成随机数
-    randomInt(){
-      return parseInt(Math.random()*5,10)+1;
-    },
-
     //随机选择当前天气的图片
     randomPic(){
       let source="https://cdn.ri-co.cn/project/iot1/"
-      let num=parseInt(Math.random()*5,10)+1;
+      let num=parseInt(Math.random()*10,10)+1;
       return source+this.comWeather+num+".jpg"
     },
 
@@ -66,6 +61,7 @@ export default {
     this.getRain()
     this.getCloud()
     this.getData()
+    this.backimg=this.comBackimg
   },
 
   watch:{
