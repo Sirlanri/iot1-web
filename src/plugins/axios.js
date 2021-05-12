@@ -12,8 +12,8 @@ let config = {
   // baseURL: process.env.baseURL || process.env.apiUrl || ""
   // timeout: 60 * 1000, // Timeout
   withCredentials: true, // Check cross-site Access-Control
-  baseURL:"http://192.168.1.150:8090/iot1/web",
-  //baseURL:"https://api.ri-co.cn/iot1"
+  //baseURL:"http://192.168.1.150:8090/iot1/web",
+  baseURL:"https://api.ri-co.cn/iot1/web"
 };
 
 const _axios = axios.create(config);

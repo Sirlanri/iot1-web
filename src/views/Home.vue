@@ -27,6 +27,7 @@ export default {
       weather:'',
       rain:0,
       light:100,
+      backimg:{},
     }
   },
 
@@ -42,19 +43,14 @@ export default {
       return "sunny"
     },
 
-    //生成随机数
-    randomInt(){
-      return parseInt(Math.random()*5,10)+1;
-    },
-
     //随机选择当前天气的图片
     randomPic(){
       let source="https://cdn.ri-co.cn/project/iot1/"
-      let num=parseInt(Math.random()*5,10)+1;
+      let num=parseInt(Math.random()*10,10)+1;
       return source+this.comWeather+num+".jpg"
     },
 
-    backimg(){
+    comBackimg(){
       return{
         backgroundImage:`url(${this.randomPic})`
       }
@@ -62,7 +58,16 @@ export default {
   },
 
   mounted(){
+    this.getRain()
+    this.getCloud()
     this.getData()
+    this.backimg=this.comBackimg
+  },
+
+  watch:{
+    comWeather(){
+      this.backimg=this.comBackimg
+    }
   },
 
   methods:{
@@ -101,7 +106,7 @@ export default {
   position: fixed;
   width: 100%;
   height: 100%;
-  background-image: url("https://cdn.ri-co.cn/project/iot1/sunny1.jpg");
+
   background-size: cover;
   background-repeat: no-repeat;
 	background-position: center;

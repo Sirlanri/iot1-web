@@ -7,10 +7,10 @@
       <v-btn block @click="sclose" class="ctrl-btn">关闭</v-btn>
     </v-col>
     <v-col lg="2" cols="4">
-      <v-btn block @click="son" class="ctrl-btn">常亮</v-btn>
+      <v-btn block @click="son" class="ctrl-btn">开启</v-btn>
     </v-col>
     <v-col lg="2" cols="4">
-      <v-btn block @click="sblink" class="ctrl-btn">闪烁</v-btn>
+      <v-btn block @click="sblink" class="ctrl-btn">自动</v-btn>
     </v-col>
     
 
@@ -53,12 +53,14 @@ export default {
             auth:this.authcode
           }
         }).then(res=>{
-          console.log(res.status)
           if (res.status!=200) {
             this.info="授权码错误！"
             this.infowin=true
           }
         })
+      }else{
+        this.info="请输入授权码"
+        this.infowin=true
       }
     },
     son(){
@@ -75,6 +77,10 @@ export default {
           }
         })
       }
+      else{
+        this.info="请输入授权码"
+        this.infowin=true
+      }
     },
     sblink(){
       if (this.authcode!="") {
@@ -89,6 +95,9 @@ export default {
             this.infowin=true
           }
         })
+      }else{
+        this.info="请输入授权码"
+        this.infowin=true
       }
     },
 
